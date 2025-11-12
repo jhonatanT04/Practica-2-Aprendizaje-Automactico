@@ -1,0 +1,47 @@
+<div class="stock-container">
+  <div class="stock-card">
+    <h1 class="title"> Predicción de Stock - Supermercado</h1>
+    <p class="description">
+      Bienvenido al sistema inteligente de predicción de stock. Ingresa los datos de un producto y obtén 
+      predicciones precisas sobre la demanda futura para optimizar tu inventario y reducir pérdidas.
+    </p>
+
+    <div class="input-section">
+      <label for="producto">Producto</label>
+      <input id="producto" type="text" placeholder="Ej: Leche Entera 1L" />
+
+      <label for="fecha">Fecha</label>
+      <input id="fecha" type="date" />
+
+      <button class="btn-primary"> Predecir Stock</button>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="report-section">
+      <h2> Reporte de Todos los Productos</h2>
+      <p>Genera un reporte con las predicciones de stock para todos los productos del inventario.</p>
+
+      <div class="report-date">
+        <label for="fechaReporte">Selecciona una fecha</label>
+        <input id="fechaReporte" type="date" />
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Fecha</th>
+              <th>Predicción de Stock</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+
+      <button class="btn-secondary"> Generar Reporte</button>
+    </div>
+  </div>
+</div>
