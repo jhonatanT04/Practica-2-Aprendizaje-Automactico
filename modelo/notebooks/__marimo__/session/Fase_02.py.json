@@ -1,0 +1,301 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.17.7"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "d42654365f9aa64c75d53dea063be8fa",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"fase-2-modelado-y-evaluacion-con-mlflow\">Fase 2: Modelado y Evaluaci\u00f3n con MLflow</h1>\n<span class=\"paragraph\">En esta fase, usaremos el dataset procesado (<code>dataset_processed_advanced.csv</code>)\npara entrenar un modelo de Machine Learning.</span>\n<span class=\"paragraph\">El objetivo es predecir <code>quantity_available</code>.</span>\n<span class=\"paragraph\">Usaremos <strong>MLflow</strong> para registrar y gestionar nuestros experimentos,\ntal como lo solicit\u00f3 el PM.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "2704386da64d4ec873878915891aa234",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"1-carga-de-datos-procesados\">1. Carga de Datos Procesados</h2>\n<span class=\"paragraph\">Cargamos el dataset <code>dataset_processed_advanced.csv</code> que creamos en la Fase 2.\nEste dataset ya est\u00e1 100% limpio, es num\u00e9rico y est\u00e1 listo para el modelo.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "8592a05b70e42eb2ab7f30c2aa2aca50",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"2-definicion-de-variables-x-y\">2. Definici\u00f3n de Variables (X, y)</h2>\n<span class=\"paragraph\">Separamos nuestro dataset en:</span>\n<ul>\n<li><strong><code>y</code> (Target):</strong> La variable que queremos predecir (<code>quantity_available</code>).</li>\n<li><strong><code>X</code> (Features):</strong> Todas las \"pistas\" (lags, medias, etc.) que usar\u00e1 el modelo.</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "0c9f4d466a6ae8f75fadb88eacd14423",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"3-division-de-datos-traintest-split\">3. Divisi\u00f3n de Datos (Train/Test Split)</h2>\n<span class=\"paragraph\">Dividimos los datos en dos conjuntos:</span>\n<ul>\n<li><strong>Entrenamiento (80%):</strong> Los datos que usamos para \"ense\u00f1arle\" al modelo.</li>\n<li><strong>Prueba (20%):</strong> Los datos que \"escondemos\" para evaluar qu\u00e9 tan bien\n    aprendi\u00f3 el modelo con datos que nunca ha visto.</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "325b8379214109185ee139d11bac77f0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"4-configuracion-del-experimento-mlflow\">4. Configuraci\u00f3n del Experimento MLflow</h2>\n<span class=\"paragraph\">Aqu\u00ed le decimos a MLflow d\u00f3nde guardar los resultados.</span>\n<ul>\n<li><code>set_tracking_uri</code>: Crea una carpeta local <code>mlruns</code> para guardar todo.</li>\n<li><code>set_experiment</code>: Nombra nuestro \"cuaderno de laboratorio\".</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "0356777f0b73a0f2b0f9d5ef597a62c1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"5-entrenamiento-y-registro-con-mlflow\">5. Entrenamiento y Registro con MLflow</h2>\n<ol>\n<li><code>with mlflow.start_run()</code>: Inicia una nueva \"sesi\u00f3n\" de registro.</li>\n<li>Definimos el modelo (RandomForest).</li>\n<li><code>mlflow.log_params()</code>: Registra la configuraci\u00f3n del modelo.</li>\n<li><code>model.fit()</code>: Entrenamos el modelo.</li>\n<li><code>model.predict()</code>: Hacemos predicciones.</li>\n<li><code>mlflow.log_metrics()</code>: Registra los resultados (MAE, MSE, R\u00b2).</li>\n<li><code>mlflow.sklearn.log_model()</code>: Guarda el archivo del modelo.</li>\n</ol></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "26f3fd81eb8dcc93494ae7afbb707cf8",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"6-visualizacion-de-resultados\">6. Visualizaci\u00f3n de Resultados</h2>\n<span class=\"paragraph\">\u00bfQu\u00e9 tan bueno fue el modelo?</span>\n<ul>\n<li><strong>R\u00b2 (Coeficiente de Determinaci\u00f3n):</strong> El mejor valor es 1.0. Un R\u00b2 de 0.85\n    significa que el modelo puede \"explicar\" el 85% de la variaci\u00f3n del stock.</li>\n<li><strong>MAE (Error Absoluto Medio):</strong> Nos dice, en promedio, por cu\u00e1ntas <em>unidades</em>\n    se equivoca nuestra predicci\u00f3n. Si el MAE es 5, significa que nuestras\n    predicciones est\u00e1n erradas por +/- 5 unidades en promedio.</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "b5e12f25142114e5964aac0f342eec94",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"7-importancia-de-features\">7. Importancia de Features</h2>\n<span class=\"paragraph\">Esta es la parte m\u00e1s valiosa para el negocio.\n\u00bfQu\u00e9 variables (features) us\u00f3 m\u00e1s el modelo para tomar sus decisiones?</span>\n<span class=\"paragraph\">Esto nos dir\u00e1 si <code>lag_1</code>, <code>rotacion_estimada_30d</code> o <code>es_feriado</code>\nfueron las \"pistas\" m\u00e1s importantes.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "7c11156c5155d32feedeb211a84b13ed",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"8-guardado-del-modelo-metodo-joblib\">8. Guardado del Modelo (M\u00e9todo Joblib)</h2>\n<span class=\"paragraph\">MLflow ya guard\u00f3 el modelo por nosotros (en la carpeta <code>mlruns</code>).\nSin embargo, para seguir tu ejemplo anterior, tambi\u00e9n lo guardaremos\ndirectamente en nuestra carpeta principal usando <code>joblib</code>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "8d964a5d28eeeca9741a67e6e35aed8a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"9-inicia-la-ui-de-mlflow\">9. \u00a1Inicia la UI de MLflow!</h2>\n<span class=\"paragraph\">\u00a1Todo est\u00e1 registrado! Para ver el dashboard con tus resultados:</span>\n<ol>\n<li>Abre una <strong>nueva terminal</strong> (o Anaconda Prompt).</li>\n<li>Navega (<code>cd</code>) a la carpeta de tu proyecto (donde est\u00e1 este cuaderno\n    y la nueva carpeta <code>mlruns</code>).</li>\n<li>Ejecuta el siguiente comando:</li>\n</ol>\n<div class=\"language-bash codehilite\"><pre><span></span><code>mlflow<span class=\"w\"> </span>ui\n</code></pre></div>\n<ol start=\"4\">\n<li>Abre tu navegador web y ve a la direcci\u00f3n que te indica\n    (usualmente <code>http://127.0.0.1:5000</code>).</li>\n</ol></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "58e02470f69b9c5339af3c97055cec6a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "Todas las librer\u00edas para modelado y MLflow han sido importadas.\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "bda50fcb33372793bcc257ecf008b27e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "Dataset cargado exitosamente. Forma: (7050, 40)\n\n--- df_model.info() ---\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 7050 entries, 0 to 7049\nData columns (total 40 columns):\n #   Column                      Non-Null Count  Dtype  \n---  ------                      --------------  -----  \n 0   product_sku                 7050 non-null   object \n 1   prioridad_proveedor         7050 non-null   int64  \n 2   quantity_on_hand            7050 non-null   int64  \n 3   quantity_reserved           7050 non-null   int64  \n 4   quantity_available          7050 non-null   int64  \n 5   minimum_stock_level         7050 non-null   int64  \n 6   reorder_point               7050 non-null   int64  \n 7   optimal_stock_level         7050 non-null   int64  \n 8   reorder_quantity            7050 non-null   int64  \n 9   average_daily_usage         7050 non-null   float64\n 10  unit_cost                   7050 non-null   float64\n 11  total_value                 7050 non-null   float64\n 12  region_almacen              7050 non-null   object \n 13  is_active                   7050 non-null   int64  \n 14  anio                        7050 non-null   int64  \n 15  mes                         7050 non-null   int64  \n 16  vacaciones_o_no             7050 non-null   int64  \n 17  es_feriado                  7050 non-null   int64  \n 18  temporada_alta              7050 non-null   int64  \n 19  semana_del_anio             7050 non-null   int64  \n 20  dia_del_mes                 7050 non-null   int64  \n 21  dia_de_la_semana            7050 non-null   int64  \n 22  es_fin_de_semana            7050 non-null   int64  \n 23  trimestre                   7050 non-null   int64  \n 24  lag_1                       7050 non-null   float64\n 25  lag_7                       7050 non-null   float64\n 26  lag_30                      7050 non-null   float64\n 27  media_movil_7d              7050 non-null   float64\n 28  media_movil_30d             7050 non-null   float64\n 29  media_movil_exponencial     7050 non-null   float64\n 30  std_movil_30d               7050 non-null   float64\n 31  variacion_stock_diaria      7050 non-null   float64\n 32  tendencia_stock             7050 non-null   float64\n 33  dias_desde_ultimo_pedido    7050 non-null   int64  \n 34  ratio_reservado_disponible  7050 non-null   float64\n 35  anomalia_stock              7050 non-null   float64\n 36  rotacion_estimada_30d       7050 non-null   float64\n 37  estacion_Oto\u00f1o              7050 non-null   bool   \n 38  estacion_Primavera          7050 non-null   bool   \n 39  estacion_Verano             7050 non-null   bool   \ndtypes: bool(3), float64(15), int64(20), object(2)\nmemory usage: 2.0+ MB\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "PKri",
+      "code_hash": "f513b7d93e916cfeed415090b374c9c7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "Target 'y' definido. (Total: 7050 registros)\nFeatures 'X' definidos. (Total: 7050 registros, 38 features)\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "12add4efe72c698336534a7b1d57cfd9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "Datos de Entrenamiento (Train): 5640 registros\nDatos de Prueba (Test): 1410 registros\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "065a594ee94b080ae96855b70ddc69e9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "C:\\Users\\samil\\Desktop\\APRENDIZAJE AUTOMATICO\\PRIMER INTERCICLO\\Practica-2-Aprendizaje-Automactico\\.venv\\Lib\\site-packages\\mlflow\\tracking\\_tracking_service\\utils.py:140: FutureWarning: Filesystem tracking backend (e.g., './mlruns') is deprecated. Please switch to a database backend (e.g., 'sqlite:///mlflow.db'). For feedback, see: https://github.com/mlflow/mlflow/issues/18534\n  return FileStore(store_uri, store_uri)\n2025/11/11 22:10:33 INFO mlflow.tracking.fluent: Experiment with name 'Prediccion de Stock' does not exist. Creating a new experiment.\n",
+          "mimetype": "text/plain"
+        },
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "MLflow configurado. Los experimentos se guardar\u00e1n en la carpeta 'mlruns'.\nNombre del experimento: 'Prediccion de Stock'\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "emfo",
+      "code_hash": "a6cba7e1e9ee724cc8ae34ec9fb1ade5",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "could not convert string to float: 'Sur'",
+          "traceback": []
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "Registrando par\u00e1metros en MLflow...\nEntrenando el modelo...\n",
+          "mimetype": "text/plain"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;C:\\Users\\samil\\Desktop\\APRENDIZAJE AUTOMATICO\\PRIMER INTERCICLO\\Practica-2-Aprendizaje-Automactico\\.venv\\Lib\\site-packages\\marimo\\_runtime\\executor.py&quot;</span>, line <span class=\"m\">138</span>, in <span class=\"n\">execute_cell</span>\n<span class=\"w\">    </span><span class=\"n\">exec</span><span class=\"p\">(</span><span class=\"n\">cell</span><span class=\"o\">.</span><span class=\"n\">body</span><span class=\"p\">,</span> <span class=\"n\">glbls</span><span class=\"p\">)</span>\n<span class=\"w\">    </span><span class=\"pm\">~~~~^^^^^^^^^^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;C:\\Users\\samil\\AppData\\Local\\Temp\\marimo_5324\\__marimo__cell_emfo_.py&quot;</span>, line <span class=\"m\">21</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">model</span><span class=\"o\">.</span><span class=\"n\">fit</span><span class=\"p\">(</span><span class=\"n\">X_train</span><span class=\"p\">,</span> <span class=\"n\">y_train</span><span class=\"p\">)</span>\n<span class=\"w\">    </span><span class=\"pm\">~~~~~~~~~^^^^^^^^^^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;C:\\Users\\samil\\Desktop\\APRENDIZAJE AUTOMATICO\\PRIMER INTERCICLO\\Practica-2-Aprendizaje-Automactico\\.venv\\Lib\\site-packages\\sklearn\\base.py&quot;</span>, line <span class=\"m\">1365</span>, in <span class=\"n\">wrapper</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"n\">fit_method</span><span class=\"p\">(</span><span class=\"n\">estimator</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;C:\\Users\\samil\\Desktop\\APRENDIZAJE AUTOMATICO\\PRIMER INTERCICLO\\Practica-2-Aprendizaje-Automactico\\.venv\\Lib\\site-packages\\sklearn\\ensemble\\_forest.py&quot;</span>, line <span class=\"m\">359</span>, in <span class=\"n\">fit</span>\n<span class=\"w\">    </span><span class=\"n\">X</span><span class=\"p\">,</span> <span class=\"n\">y</span> <span class=\"o\">=</span> <span class=\"n\">validate_data</span><span class=\"p\">(</span>\n<span class=\"w\">           </span><span class=\"pm\">~~~~~~~~~~~~~^</span>\n<span class=\"w\">    </span>    <span class=\"bp\">self</span><span class=\"p\">,</span>\n<span class=\"w\">        </span><span class=\"pm\">^^^^^</span>\n<span class=\"w\">    </span><span class=\"o\">...&lt;</span><span class=\"mi\">5</span> <span class=\"n\">lines</span><span class=\"o\">&gt;...</span>\n<span class=\"w\">    </span>    <span class=\"n\">ensure_all_finite</span><span class=\"o\">=</span><span class=\"kc\">False</span><span class=\"p\">,</span>\n<span class=\"w\">        </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^^^^</span>\n<span class=\"w\">    </span><span class=\"p\">)</span>\n<span class=\"w\">    </span><span class=\"pm\">^</span>\n  File <span class=\"nb\">&quot;C:\\Users\\samil\\Desktop\\APRENDIZAJE AUTOMATICO\\PRIMER INTERCICLO\\Practica-2-Aprendizaje-Automactico\\.venv\\Lib\\site-packages\\sklearn\\utils\\validation.py&quot;</span>, line <span class=\"m\">2971</span>, in <span class=\"n\">validate_data</span>\n<span class=\"w\">    </span><span class=\"n\">X</span><span class=\"p\">,</span> <span class=\"n\">y</span> <span class=\"o\">=</span> <span class=\"n\">check_X_y</span><span class=\"p\">(</span><span class=\"n\">X</span><span class=\"p\">,</span> <span class=\"n\">y</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">check_params</span><span class=\"p\">)</span>\n<span class=\"w\">           </span><span class=\"pm\">~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;C:\\Users\\samil\\Desktop\\APRENDIZAJE AUTOMATICO\\PRIMER INTERCICLO\\Practica-2-Aprendizaje-Automactico\\.venv\\Lib\\site-packages\\sklearn\\utils\\validation.py&quot;</span>, line <span class=\"m\">1368</span>, in <span class=\"n\">check_X_y</span>\n<span class=\"w\">    </span><span class=\"n\">X</span> <span class=\"o\">=</span> <span class=\"n\">check_array</span><span class=\"p\">(</span>\n<span class=\"w\">    </span>    <span class=\"n\">X</span><span class=\"p\">,</span>\n<span class=\"w\">    </span><span class=\"o\">...&lt;</span><span class=\"mi\">12</span> <span class=\"n\">lines</span><span class=\"o\">&gt;...</span>\n<span class=\"w\">    </span>    <span class=\"n\">input_name</span><span class=\"o\">=</span><span class=\"s2\">&quot;X&quot;</span><span class=\"p\">,</span>\n<span class=\"w\">    </span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;C:\\Users\\samil\\Desktop\\APRENDIZAJE AUTOMATICO\\PRIMER INTERCICLO\\Practica-2-Aprendizaje-Automactico\\.venv\\Lib\\site-packages\\sklearn\\utils\\validation.py&quot;</span>, line <span class=\"m\">971</span>, in <span class=\"n\">check_array</span>\n<span class=\"w\">    </span><span class=\"n\">array</span> <span class=\"o\">=</span> <span class=\"n\">array</span><span class=\"o\">.</span><span class=\"n\">astype</span><span class=\"p\">(</span><span class=\"n\">new_dtype</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;C:\\Users\\samil\\Desktop\\APRENDIZAJE AUTOMATICO\\PRIMER INTERCICLO\\Practica-2-Aprendizaje-Automactico\\.venv\\Lib\\site-packages\\pandas\\core\\generic.py&quot;</span>, line <span class=\"m\">6665</span>, in <span class=\"n\">astype</span>\n<span class=\"w\">    </span><span class=\"n\">new_data</span> <span class=\"o\">=</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_mgr</span><span class=\"o\">.</span><span class=\"n\">astype</span><span class=\"p\">(</span><span class=\"n\">dtype</span><span class=\"o\">=</span><span class=\"n\">dtype</span><span class=\"p\">,</span> <span class=\"n\">copy</span><span class=\"o\">=</span><span class=\"n\">copy</span><span class=\"p\">,</span> <span class=\"n\">errors</span><span class=\"o\">=</span><span class=\"n\">errors</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;C:\\Users\\samil\\Desktop\\APRENDIZAJE AUTOMATICO\\PRIMER INTERCICLO\\Practica-2-Aprendizaje-Automactico\\.venv\\Lib\\site-packages\\pandas\\core\\internals\\managers.py&quot;</span>, line <span class=\"m\">449</span>, in <span class=\"n\">astype</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">apply</span><span class=\"p\">(</span>\n<span class=\"w\">           </span><span class=\"pm\">~~~~~~~~~~^</span>\n<span class=\"w\">    </span>    <span class=\"s2\">&quot;astype&quot;</span><span class=\"p\">,</span>\n<span class=\"w\">        </span><span class=\"pm\">^^^^^^^^^</span>\n<span class=\"w\">    </span><span class=\"o\">...&lt;</span><span class=\"mi\">3</span> <span class=\"n\">lines</span><span class=\"o\">&gt;...</span>\n<span class=\"w\">    </span>    <span class=\"n\">using_cow</span><span class=\"o\">=</span><span class=\"n\">using_copy_on_write</span><span class=\"p\">(),</span>\n<span class=\"w\">        </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n<span class=\"w\">    </span><span class=\"p\">)</span>\n<span class=\"w\">    </span><span class=\"pm\">^</span>\n  File <span class=\"nb\">&quot;C:\\Users\\samil\\Desktop\\APRENDIZAJE AUTOMATICO\\PRIMER INTERCICLO\\Practica-2-Aprendizaje-Automactico\\.venv\\Lib\\site-packages\\pandas\\core\\internals\\managers.py&quot;</span>, line <span class=\"m\">363</span>, in <span class=\"n\">apply</span>\n<span class=\"w\">    </span><span class=\"n\">applied</span> <span class=\"o\">=</span> <span class=\"nb\">getattr</span><span class=\"p\">(</span><span class=\"n\">b</span><span class=\"p\">,</span> <span class=\"n\">f</span><span class=\"p\">)(</span><span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;C:\\Users\\samil\\Desktop\\APRENDIZAJE AUTOMATICO\\PRIMER INTERCICLO\\Practica-2-Aprendizaje-Automactico\\.venv\\Lib\\site-packages\\pandas\\core\\internals\\blocks.py&quot;</span>, line <span class=\"m\">784</span>, in <span class=\"n\">astype</span>\n<span class=\"w\">    </span><span class=\"n\">new_values</span> <span class=\"o\">=</span> <span class=\"n\">astype_array_safe</span><span class=\"p\">(</span><span class=\"n\">values</span><span class=\"p\">,</span> <span class=\"n\">dtype</span><span class=\"p\">,</span> <span class=\"n\">copy</span><span class=\"o\">=</span><span class=\"n\">copy</span><span class=\"p\">,</span> <span class=\"n\">errors</span><span class=\"o\">=</span><span class=\"n\">errors</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;C:\\Users\\samil\\Desktop\\APRENDIZAJE AUTOMATICO\\PRIMER INTERCICLO\\Practica-2-Aprendizaje-Automactico\\.venv\\Lib\\site-packages\\pandas\\core\\dtypes\\astype.py&quot;</span>, line <span class=\"m\">237</span>, in <span class=\"n\">astype_array_safe</span>\n<span class=\"w\">    </span><span class=\"n\">new_values</span> <span class=\"o\">=</span> <span class=\"n\">astype_array</span><span class=\"p\">(</span><span class=\"n\">values</span><span class=\"p\">,</span> <span class=\"n\">dtype</span><span class=\"p\">,</span> <span class=\"n\">copy</span><span class=\"o\">=</span><span class=\"n\">copy</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;C:\\Users\\samil\\Desktop\\APRENDIZAJE AUTOMATICO\\PRIMER INTERCICLO\\Practica-2-Aprendizaje-Automactico\\.venv\\Lib\\site-packages\\pandas\\core\\dtypes\\astype.py&quot;</span>, line <span class=\"m\">182</span>, in <span class=\"n\">astype_array</span>\n<span class=\"w\">    </span><span class=\"n\">values</span> <span class=\"o\">=</span> <span class=\"n\">_astype_nansafe</span><span class=\"p\">(</span><span class=\"n\">values</span><span class=\"p\">,</span> <span class=\"n\">dtype</span><span class=\"p\">,</span> <span class=\"n\">copy</span><span class=\"o\">=</span><span class=\"n\">copy</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;C:\\Users\\samil\\Desktop\\APRENDIZAJE AUTOMATICO\\PRIMER INTERCICLO\\Practica-2-Aprendizaje-Automactico\\.venv\\Lib\\site-packages\\pandas\\core\\dtypes\\astype.py&quot;</span>, line <span class=\"m\">133</span>, in <span class=\"n\">_astype_nansafe</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"n\">arr</span><span class=\"o\">.</span><span class=\"n\">astype</span><span class=\"p\">(</span><span class=\"n\">dtype</span><span class=\"p\">,</span> <span class=\"n\">copy</span><span class=\"o\">=</span><span class=\"kc\">True</span><span class=\"p\">)</span>\n<span class=\"w\">           </span><span class=\"pm\">~~~~~~~~~~^^^^^^^^^^^^^^^^^^</span>\n<span class=\"gr\">ValueError</span>: <span class=\"n\">could not convert string to float: &#39;Sur&#39;</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "8e0e50ec2b2b5026e8985ee1f682a246",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "34160bd13970fcad9bc341fc1137f04e",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "2a41cf679a838fdb9e28631d5a28015d",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}
