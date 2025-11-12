@@ -9,7 +9,7 @@ url = URL.create(
     host="localhost",
     database= "db",
     port=5432
-)
+)\
 # url = URL.create(
 #     drivername= "postgresql",
 #     username= "admin",
