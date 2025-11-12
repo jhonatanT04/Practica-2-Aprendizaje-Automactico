@@ -1,0 +1,372 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.17.7"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "c6ded13bf9a6218230e612f7127ec7a7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"fase-1-analisis-preparacion-y-feature-engineering\">Fase 1: An\u00e1lisis, Preparaci\u00f3n y Feature Engineering</h1>\n<span class=\"paragraph\">Notebook para la preparaci\u00f3n completa de los datos de <code>dataset.csv</code>,\nincluyendo las nuevas variables temporales, hist\u00f3ricas y sint\u00e9ticas.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "94ae259ba47da544ac95afc5a6ffd62c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"parte-1-analisis-exploratorio-de-datos-eda-sobre-el-dataset-base\">Parte 1: An\u00e1lisis Exploratorio de Datos (EDA) sobre el Dataset Base</h1>\n<h2 id=\"dataset-de-inventario-y-gestion-de-stock\">Dataset de Inventario y Gesti\u00f3n de Stock</h2>\n<span class=\"paragraph\">Un an\u00e1lisis exploratorio exhaustivo del dataset de gesti\u00f3n de inventario. El objetivo es comprender la estructura de los datos, identificar patrones, detectar anomal\u00edas y generar insights que permitan una mejor toma de decisiones en la gesti\u00f3n de stock.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "c62ff6eb547b33f1ce306eb62b1c02e6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"1-importacion-de-librerias\">1. Importaci\u00f3n de Librer\u00edas</h2>\n<span class=\"paragraph\">Importamos las librer\u00edas necesarias para el an\u00e1lisis exploratorio, incluyendo herramientas para manipulaci\u00f3n de datos, visualizaci\u00f3n y an\u00e1lisis estad\u00edstico.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "10916a195f7e8e1f97a4db7931309572",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"2-carga-de-datos\">2. Carga de Datos</h2>\n<span class=\"paragraph\">Cargamos el dataset desde el archivo CSV y realizamos una primera inspecci\u00f3n de la estructura de los datos.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "0bc692fe0c5a5cfb946dded8dfe35bf0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"3-analisis-de-la-estructura-de-datos\">3. An\u00e1lisis de la Estructura de Datos</h2>\n<span class=\"paragraph\">Examinamos los tipos de datos, valores nulos y caracter\u00edsticas generales de cada columna.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "c2f4b9184bff086b4d29018d84735c3c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"4-estadisticas-descriptivas\">4. Estad\u00edsticas Descriptivas</h2>\n<span class=\"paragraph\">An\u00e1lisis estad\u00edstico de las variables num\u00e9ricas para comprender la distribuci\u00f3n, tendencia central y dispersi\u00f3n de los datos.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "1ce9f5f838ece813d9b4a4c8c27338b5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"5-deteccion-de-valores-atipicos-outliers\">5. Detecci\u00f3n de Valores At\u00edpicos (Outliers)</h2>\n<span class=\"paragraph\">Identificamos valores at\u00edpicos utilizando el m\u00e9todo de rango intercuart\u00edlico (IQR) para las variables num\u00e9ricas m\u00e1s relevantes.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "3768132fb935e3bbb70948a12581c490",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"6-visualizacion-de-distribuciones\">6. Visualizaci\u00f3n de Distribuciones</h2>\n<span class=\"paragraph\">An\u00e1lisis visual de las distribuciones de las principales variables num\u00e9ricas del dataset.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "36daea37bb10ab076b05030121737fc5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"7-analisis-de-correlaciones\">7. An\u00e1lisis de Correlaciones</h2>\n<span class=\"paragraph\">Evaluamos las relaciones lineales entre variables num\u00e9ricas mediante la matriz de correlaci\u00f3n.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "6018a21916bc0ba5b6a34bdeb03c9294",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"8-analisis-temporal\">8. An\u00e1lisis Temporal</h2>\n<span class=\"paragraph\">An\u00e1lisis de patrones temporales en el inventario, considerando tendencias y estacionalidad.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ulZA",
+      "code_hash": "954e769247bc3d36c3a728085e312d55",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"9-analisis-categorico\">9. An\u00e1lisis Categ\u00f3rico</h2>\n<span class=\"paragraph\">Exploraci\u00f3n de las distribuciones de variables categ\u00f3ricas clave y su relaci\u00f3n con variables num\u00e9ricas.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZBYS",
+      "code_hash": "c11e854464d96b4657d09f27f70ebb11",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"10-analisis-de-estacionalidad-y-factores-externos\">10. An\u00e1lisis de Estacionalidad y Factores Externos</h2>\n<span class=\"paragraph\">Evaluaci\u00f3n del impacto de factores temporales como temporada alta, feriados y vacaciones en el comportamiento del inventario.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nHfw",
+      "code_hash": "94b4a02425c14e6d359f7c2f5af6c8e1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"11-analisis-de-costos-y-valor-del-inventario\">11. An\u00e1lisis de Costos y Valor del Inventario</h2>\n<span class=\"paragraph\">Examinamos la estructura de costos y el valor total del inventario, identificando productos de alto valor.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "AjVT",
+      "code_hash": "d322c5d7936b939c9f18edd7256ef2f4",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"12-analisis-de-niveles-de-stock-y-reabastecimiento\">12. An\u00e1lisis de Niveles de Stock y Reabastecimiento</h2>\n<span class=\"paragraph\">Evaluaci\u00f3n de los niveles de stock en relaci\u00f3n con los puntos de reorden y niveles \u00f3ptimos establecidos.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "NCOB",
+      "code_hash": "96a372e38e80c6598b5f7d5d9f9e53c1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"13-analisis-de-proveedores\">13. An\u00e1lisis de Proveedores</h2>\n<span class=\"paragraph\">Evaluaci\u00f3n del desempe\u00f1o y distribuci\u00f3n de proveedores en el sistema de inventario.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TRpd",
+      "code_hash": "1f2da37c34998c36af97934e77a9751d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"14-conclusiones-y-hallazgos-principales\">14. Conclusiones y Hallazgos Principales</h2>\n<span class=\"paragraph\">Resumen ejecutivo de los principales insights obtenidos durante el an\u00e1lisis exploratorio.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "177c5afe48891ddfc4891db88de65dbc",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "Librer\u00edas importadas correctamente.\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "PKri",
+      "code_hash": "ed2c809710a619f08b7b255461db9811",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='PKri-0' random-id='6a49d11f-a48d-2772-9a6a-18f2e9bf4d1b'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;id&#92;&quot;:1,&#92;&quot;created_at&#92;&quot;:&#92;&quot;2024-01-01&#92;&quot;,&#92;&quot;product_id&#92;&quot;:103,&#92;&quot;product_name&#92;&quot;:&#92;&quot;Barra Cereal Choco&#92;&quot;,&#92;&quot;product_sku&#92;&quot;:&#92;&quot;CRT-103&#92;&quot;,&#92;&quot;supplier_id&#92;&quot;:203,&#92;&quot;supplier_name&#92;&quot;:&#92;&quot;Proveedor C&#92;&quot;,&#92;&quot;prioridad_proveedor&#92;&quot;:3,&#92;&quot;quantity_on_hand&#92;&quot;:380,&#92;&quot;quantity_reserved&#92;&quot;:27,&#92;&quot;quantity_available&#92;&quot;:353,&#92;&quot;minimum_stock_level&#92;&quot;:80,&#92;&quot;reorder_point&#92;&quot;:180,&#92;&quot;optimal_stock_level&#92;&quot;:500,&#92;&quot;reorder_quantity&#92;&quot;:0,&#92;&quot;average_daily_usage&#92;&quot;:22.0,&#92;&quot;last_order_date&#92;&quot;:&#92;&quot;2023-12-25&#92;&quot;,&#92;&quot;last_stock_count_date&#92;&quot;:&#92;&quot;2023-12-31&#92;&quot;,&#92;&quot;unit_cost&#92;&quot;:0.7,&#92;&quot;total_value&#92;&quot;:266.0,&#92;&quot;expiration_date&#92;&quot;:&#92;&quot;2025-10-30&#92;&quot;,&#92;&quot;batch_number&#92;&quot;:&#92;&quot;BATCH-C1&#92;&quot;,&#92;&quot;warehouse_location&#92;&quot;:&#92;&quot;Almac&#92;&#92;u00e9n Central&#92;&quot;,&#92;&quot;shelf_location&#92;&quot;:&#92;&quot;Pasillo 3&#92;&quot;,&#92;&quot;region_almacen&#92;&quot;:&#92;&quot;Sur&#92;&quot;,&#92;&quot;stock_status&#92;&quot;:&#92;&quot;activo&#92;&quot;,&#92;&quot;is_active&#92;&quot;:1,&#92;&quot;last_updated_at&#92;&quot;:&#92;&quot;2024-01-01&#92;&quot;,&#92;&quot;created_by_id&#92;&quot;:503,&#92;&quot;record_sequence_number&#92;&quot;:3,&#92;&quot;categoria_producto&#92;&quot;:&#92;&quot;Snacks&#92;&quot;,&#92;&quot;subcategoria_producto&#92;&quot;:&#92;&quot;Barras de Cereal&#92;&quot;,&#92;&quot;anio&#92;&quot;:2024,&#92;&quot;mes&#92;&quot;:1,&#92;&quot;vacaciones_o_no&#92;&quot;:false,&#92;&quot;es_feriado&#92;&quot;:true,&#92;&quot;temporada_alta&#92;&quot;:true},{&#92;&quot;id&#92;&quot;:2,&#92;&quot;created_at&#92;&quot;:&#92;&quot;2024-01-02&#92;&quot;,&#92;&quot;product_id&#92;&quot;:103,&#92;&quot;product_name&#92;&quot;:&#92;&quot;Barra Cereal Choco&#92;&quot;,&#92;&quot;product_sku&#92;&quot;:&#92;&quot;CRT-103&#92;&quot;,&#92;&quot;supplier_id&#92;&quot;:203,&#92;&quot;supplier_name&#92;&quot;:&#92;&quot;Proveedor C&#92;&quot;,&#92;&quot;prioridad_proveedor&#92;&quot;:3,&#92;&quot;quantity_on_hand&#92;&quot;:358,&#92;&quot;quantity_reserved&#92;&quot;:36,&#92;&quot;quantity_available&#92;&quot;:322,&#92;&quot;minimum_stock_level&#92;&quot;:80,&#92;&quot;reorder_point&#92;&quot;:180,&#92;&quot;optimal_stock_level&#92;&quot;:500,&#92;&quot;reorder_quantity&#92;&quot;:0,&#92;&quot;average_daily_usage&#92;&quot;:20.0,&#92;&quot;last_order_date&#92;&quot;:&#92;&quot;2024-01-01&#92;&quot;,&#92;&quot;last_stock_count_date&#92;&quot;:&#92;&quot;2023-12-30&#92;&quot;,&#92;&quot;unit_cost&#92;&quot;:0.7,&#92;&quot;total_value&#92;&quot;:250.6,&#92;&quot;expiration_date&#92;&quot;:&#92;&quot;2025-10-30&#92;&quot;,&#92;&quot;batch_number&#92;&quot;:&#92;&quot;BATCH-C1&#92;&quot;,&#92;&quot;warehouse_location&#92;&quot;:&#92;&quot;Almac&#92;&#92;u00e9n Central&#92;&quot;,&#92;&quot;shelf_location&#92;&quot;:&#92;&quot;Pasillo 3&#92;&quot;,&#92;&quot;region_almacen&#92;&quot;:&#92;&quot;Sur&#92;&quot;,&#92;&quot;stock_status&#92;&quot;:&#92;&quot;activo&#92;&quot;,&#92;&quot;is_active&#92;&quot;:1,&#92;&quot;last_updated_at&#92;&quot;:&#92;&quot;2024-01-02&#92;&quot;,&#92;&quot;created_by_id&#92;&quot;:503,&#92;&quot;record_sequence_number&#92;&quot;:3,&#92;&quot;categoria_producto&#92;&quot;:&#92;&quot;Snacks&#92;&quot;,&#92;&quot;subcategoria_producto&#92;&quot;:&#92;&quot;Barras de Cereal&#92;&quot;,&#92;&quot;anio&#92;&quot;:2024,&#92;&quot;mes&#92;&quot;:1,&#92;&quot;vacaciones_o_no&#92;&quot;:false,&#92;&quot;es_feriado&#92;&quot;:false,&#92;&quot;temporada_alta&#92;&quot;:true},{&#92;&quot;id&#92;&quot;:3,&#92;&quot;created_at&#92;&quot;:&#92;&quot;2024-01-03&#92;&quot;,&#92;&quot;product_id&#92;&quot;:103,&#92;&quot;product_name&#92;&quot;:&#92;&quot;Barra Cereal Choco&#92;&quot;,&#92;&quot;product_sku&#92;&quot;:&#92;&quot;CRT-103&#92;&quot;,&#92;&quot;supplier_id&#92;&quot;:203,&#92;&quot;supplier_name&#92;&quot;:&#92;&quot;Proveedor C&#92;&quot;,&#92;&quot;prioridad_proveedor&#92;&quot;:3,&#92;&quot;quantity_on_hand&#92;&quot;:438,&#92;&quot;quantity_reserved&#92;&quot;:11,&#92;&quot;quantity_available&#92;&quot;:427,&#92;&quot;minimum_stock_level&#92;&quot;:80,&#92;&quot;reorder_point&#92;&quot;:180,&#92;&quot;optimal_stock_level&#92;&quot;:500,&#92;&quot;reorder_quantity&#92;&quot;:0,&#92;&quot;average_daily_usage&#92;&quot;:20.0,&#92;&quot;last_order_date&#92;&quot;:&#92;&quot;2024-01-01&#92;&quot;,&#92;&quot;last_stock_count_date&#92;&quot;:&#92;&quot;2023-12-31&#92;&quot;,&#92;&quot;unit_cost&#92;&quot;:0.7,&#92;&quot;total_value&#92;&quot;:306.6,&#92;&quot;expiration_date&#92;&quot;:&#92;&quot;2025-10-30&#92;&quot;,&#92;&quot;batch_number&#92;&quot;:&#92;&quot;BATCH-C1&#92;&quot;,&#92;&quot;warehouse_location&#92;&quot;:&#92;&quot;Almac&#92;&#92;u00e9n Central&#92;&quot;,&#92;&quot;shelf_location&#92;&quot;:&#92;&quot;Pasillo 3&#92;&quot;,&#92;&quot;region_almacen&#92;&quot;:&#92;&quot;Sur&#92;&quot;,&#92;&quot;stock_status&#92;&quot;:&#92;&quot;activo&#92;&quot;,&#92;&quot;is_active&#92;&quot;:1,&#92;&quot;last_updated_at&#92;&quot;:&#92;&quot;2024-01-03&#92;&quot;,&#92;&quot;created_by_id&#92;&quot;:503,&#92;&quot;record_sequence_number&#92;&quot;:3,&#92;&quot;categoria_producto&#92;&quot;:&#92;&quot;Snacks&#92;&quot;,&#92;&quot;subcategoria_producto&#92;&quot;:&#92;&quot;Barras de Cereal&#92;&quot;,&#92;&quot;anio&#92;&quot;:2024,&#92;&quot;mes&#92;&quot;:1,&#92;&quot;vacaciones_o_no&#92;&quot;:false,&#92;&quot;es_feriado&#92;&quot;:false,&#92;&quot;temporada_alta&#92;&quot;:true},{&#92;&quot;id&#92;&quot;:4,&#92;&quot;created_at&#92;&quot;:&#92;&quot;2024-01-04&#92;&quot;,&#92;&quot;product_id&#92;&quot;:103,&#92;&quot;product_name&#92;&quot;:&#92;&quot;Barra Cereal Choco&#92;&quot;,&#92;&quot;product_sku&#92;&quot;:&#92;&quot;CRT-103&#92;&quot;,&#92;&quot;supplier_id&#92;&quot;:203,&#92;&quot;supplier_name&#92;&quot;:&#92;&quot;Proveedor C&#92;&quot;,&#92;&quot;prioridad_proveedor&#92;&quot;:3,&#92;&quot;quantity_on_hand&#92;&quot;:419,&#92;&quot;quantity_reserved&#92;&quot;:28,&#92;&quot;quantity_available&#92;&quot;:391,&#92;&quot;minimum_stock_level&#92;&quot;:80,&#92;&quot;reorder_point&#92;&quot;:180,&#92;&quot;optimal_stock_level&#92;&quot;:500,&#92;&quot;reorder_quantity&#92;&quot;:0,&#92;&quot;average_daily_usage&#92;&quot;:20.0,&#92;&quot;last_order_date&#92;&quot;:&#92;&quot;2023-12-29&#92;&quot;,&#92;&quot;last_stock_count_date&#92;&quot;:&#92;&quot;2024-01-03&#92;&quot;,&#92;&quot;unit_cost&#92;&quot;:0.7,&#92;&quot;total_value&#92;&quot;:293.3,&#92;&quot;expiration_date&#92;&quot;:&#92;&quot;2025-10-30&#92;&quot;,&#92;&quot;batch_number&#92;&quot;:&#92;&quot;BATCH-C1&#92;&quot;,&#92;&quot;warehouse_location&#92;&quot;:&#92;&quot;Almac&#92;&#92;u00e9n Central&#92;&quot;,&#92;&quot;shelf_location&#92;&quot;:&#92;&quot;Pasillo 3&#92;&quot;,&#92;&quot;region_almacen&#92;&quot;:&#92;&quot;Sur&#92;&quot;,&#92;&quot;stock_status&#92;&quot;:&#92;&quot;activo&#92;&quot;,&#92;&quot;is_active&#92;&quot;:1,&#92;&quot;last_updated_at&#92;&quot;:&#92;&quot;2024-01-04&#92;&quot;,&#92;&quot;created_by_id&#92;&quot;:503,&#92;&quot;record_sequence_number&#92;&quot;:3,&#92;&quot;categoria_producto&#92;&quot;:&#92;&quot;Snacks&#92;&quot;,&#92;&quot;subcategoria_producto&#92;&quot;:&#92;&quot;Barras de Cereal&#92;&quot;,&#92;&quot;anio&#92;&quot;:2024,&#92;&quot;mes&#92;&quot;:1,&#92;&quot;vacaciones_o_no&#92;&quot;:false,&#92;&quot;es_feriado&#92;&quot;:false,&#92;&quot;temporada_alta&#92;&quot;:true},{&#92;&quot;id&#92;&quot;:5,&#92;&quot;created_at&#92;&quot;:&#92;&quot;2024-01-05&#92;&quot;,&#92;&quot;product_id&#92;&quot;:103,&#92;&quot;product_name&#92;&quot;:&#92;&quot;Barra Cereal Choco&#92;&quot;,&#92;&quot;product_sku&#92;&quot;:&#92;&quot;CRT-103&#92;&quot;,&#92;&quot;supplier_id&#92;&quot;:203,&#92;&quot;supplier_name&#92;&quot;:&#92;&quot;Proveedor C&#92;&quot;,&#92;&quot;prioridad_proveedor&#92;&quot;:3,&#92;&quot;quantity_on_hand&#92;&quot;:398,&#92;&quot;quantity_reserved&#92;&quot;:21,&#92;&quot;quantity_available&#92;&quot;:377,&#92;&quot;minimum_stock_level&#92;&quot;:80,&#92;&quot;reorder_point&#92;&quot;:180,&#92;&quot;optimal_stock_level&#92;&quot;:500,&#92;&quot;reorder_quantity&#92;&quot;:0,&#92;&quot;average_daily_usage&#92;&quot;:20.0,&#92;&quot;last_order_date&#92;&quot;:&#92;&quot;2023-12-29&#92;&quot;,&#92;&quot;last_stock_count_date&#92;&quot;:&#92;&quot;2024-01-03&#92;&quot;,&#92;&quot;unit_cost&#92;&quot;:0.7,&#92;&quot;total_value&#92;&quot;:278.6,&#92;&quot;expiration_date&#92;&quot;:&#92;&quot;2025-10-30&#92;&quot;,&#92;&quot;batch_number&#92;&quot;:&#92;&quot;BATCH-C1&#92;&quot;,&#92;&quot;warehouse_location&#92;&quot;:&#92;&quot;Almac&#92;&#92;u00e9n Central&#92;&quot;,&#92;&quot;shelf_location&#92;&quot;:&#92;&quot;Pasillo 3&#92;&quot;,&#92;&quot;region_almacen&#92;&quot;:&#92;&quot;Sur&#92;&quot;,&#92;&quot;stock_status&#92;&quot;:&#92;&quot;activo&#92;&quot;,&#92;&quot;is_active&#92;&quot;:1,&#92;&quot;last_updated_at&#92;&quot;:&#92;&quot;2024-01-05&#92;&quot;,&#92;&quot;created_by_id&#92;&quot;:503,&#92;&quot;record_sequence_number&#92;&quot;:3,&#92;&quot;categoria_producto&#92;&quot;:&#92;&quot;Snacks&#92;&quot;,&#92;&quot;subcategoria_producto&#92;&quot;:&#92;&quot;Barras de Cereal&#92;&quot;,&#92;&quot;anio&#92;&quot;:2024,&#92;&quot;mes&#92;&quot;:1,&#92;&quot;vacaciones_o_no&#92;&quot;:false,&#92;&quot;es_feriado&#92;&quot;:false,&#92;&quot;temporada_alta&#92;&quot;:true}]&quot;' data-total-rows='5' data-total-columns='37' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;id&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;created_at&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;product_id&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;product_name&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;product_sku&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;supplier_id&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;supplier_name&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;prioridad_proveedor&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;quantity_on_hand&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;quantity_reserved&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;quantity_available&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;minimum_stock_level&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;reorder_point&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;optimal_stock_level&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;reorder_quantity&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;average_daily_usage&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;last_order_date&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;last_stock_count_date&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;unit_cost&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;total_value&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;expiration_date&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;batch_number&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;warehouse_location&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;shelf_location&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;region_almacen&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;stock_status&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;is_active&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;last_updated_at&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;created_by_id&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;record_sequence_number&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;categoria_producto&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;subcategoria_producto&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;anio&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;mes&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;vacaciones_o_no&quot;,[&quot;boolean&quot;,&quot;bool&quot;]],[&quot;es_feriado&quot;,[&quot;boolean&quot;,&quot;bool&quot;]],[&quot;temporada_alta&quot;,[&quot;boolean&quot;,&quot;bool&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "INFORMACI\u00d3N GENERAL DEL DATASET\n\nDimensiones del dataset: 7,500 filas x 37 columnas\nTama\u00f1o en memoria: 7.52 MB\n\nPrimeras 5 filas del dataset:\n================================================================================\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "98755647c3aba424baffdf711d7eee0d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "INFORMACI\u00d3N DE COLUMNAS\n\nTipos de datos y valores no nulos:\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 7500 entries, 0 to 7499\nData columns (total 37 columns):\n #   Column                  Non-Null Count  Dtype  \n---  ------                  --------------  -----  \n 0   id                      7500 non-null   int64  \n 1   created_at              7500 non-null   object \n 2   product_id              7500 non-null   int64  \n 3   product_name            7500 non-null   object \n 4   product_sku             7500 non-null   object \n 5   supplier_id             7500 non-null   int64  \n 6   supplier_name           7500 non-null   object \n 7   prioridad_proveedor     7500 non-null   int64  \n 8   quantity_on_hand        7500 non-null   int64  \n 9   quantity_reserved       7500 non-null   int64  \n 10  quantity_available      7500 non-null   int64  \n 11  minimum_stock_level     7500 non-null   int64  \n 12  reorder_point           7500 non-null   int64  \n 13  optimal_stock_level     7500 non-null   int64  \n 14  reorder_quantity        7500 non-null   int64  \n 15  average_daily_usage     7500 non-null   float64\n 16  last_order_date         7500 non-null   object \n 17  last_stock_count_date   7500 non-null   object \n 18  unit_cost               7500 non-null   float64\n 19  total_value             7500 non-null   float64\n 20  expiration_date         7500 non-null   object \n 21  batch_number            7500 non-null   object \n 22  warehouse_location      7500 non-null   object \n 23  shelf_location          7500 non-null   object \n 24  region_almacen          7500 non-null   object \n 25  stock_status            7500 non-null   object \n 26  is_active               7500 non-null   int64  \n 27  last_updated_at         7500 non-null   object \n 28  created_by_id           7500 non-null   int64  \n 29  record_sequence_number  7500 non-null   int64  \n 30  categoria_producto      7500 non-null   object \n 31  subcategoria_producto   7500 non-null   object \n 32  anio                    7500 non-null   int64  \n 33  mes                     7500 non-null   int64  \n 34  vacaciones_o_no         7500 non-null   bool   \n 35  es_feriado              7500 non-null   bool   \n 36  temporada_alta          7500 non-null   bool   \ndtypes: bool(3), float64(3), int64(16), object(15)\nmemory usage: 2.0+ MB\nNone\n\n================================================================================\nRESUMEN DE VALORES NULOS\n================================================================================\nNo se encontraron valores nulos en el dataset.\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "158cb00df69d39b54ed7b64efdae81f1",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "1c777721ec03e6213f65e4c9c16c7725",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "69addb9dec2abf7e5d3cf2c64c8511ca",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "2279d98e0df3d4a9ccdd84acb1e33b54",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "de4ebb48bf4148ef1a33086a2416ead7",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "f606bcdaec276fb7441c80e4e4c26ace",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "b69f6b7feb2e943f1165845655da491a",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "DnEU",
+      "code_hash": "4d8f88bcc0aa35e79d2bec808a06218b",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ecfG",
+      "code_hash": "3bbae823479229be9058eb9af2b3f284",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Pvdt",
+      "code_hash": "3fd6299fee3b2fe65e7c9f9c5acbe4bc",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "aLJB",
+      "code_hash": "7c58fa0305fdfb820611e24302ecbe53",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "xXTn",
+      "code_hash": "cb7e06cb6e816e59423e92f29f327337",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "pHFh",
+      "code_hash": "ad7dee456638a4efd6410935e3bf498b",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "aqbW",
+      "code_hash": "6d5a6333db7bb6de8cf0b629772bb91d",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "TXez",
+      "code_hash": "a7fcbffd6e03a36d230f812cad8d1562",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "dNNg",
+      "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
+      "outputs": [],
+      "console": []
+    }
+  ]
+}
